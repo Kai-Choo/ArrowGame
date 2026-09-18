@@ -11,6 +11,10 @@ export default defineConfig(() => {
     base: '/ArrowGame/',
     root: path.resolve(projectRoot, 'src'),
     plugins: [react(), tailwindcss()],
+    build: {
+      outDir: path.resolve(projectRoot, 'dist'),
+      emptyOutDir: true,
+    },
     resolve: {
       alias: {
         '@': projectRoot,
