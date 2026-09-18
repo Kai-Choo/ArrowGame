@@ -10,6 +10,11 @@ export default defineConfig(() => {
   return {
     base: '/ArrowGame/',
     plugins: [react(), tailwindcss()],
+    build: {
+      rollupOptions: {
+        input: path.resolve(projectRoot, 'src/index.html'),
+      },
+    },
     resolve: {
       alias: {
         '@': projectRoot,
