@@ -9,12 +9,8 @@ const projectRoot = path.dirname(fileURLToPath(import.meta.url));
 export default defineConfig(() => {
   return {
     base: '/ArrowGame/',
+    root: path.resolve(projectRoot, 'src'),
     plugins: [react(), tailwindcss()],
-    build: {
-      rollupOptions: {
-        input: path.resolve(projectRoot, 'src/index.html'),
-      },
-    },
     resolve: {
       alias: {
         '@': projectRoot,
