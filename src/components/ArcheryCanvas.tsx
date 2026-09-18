@@ -1774,8 +1774,8 @@ export const ArcheryCanvas: React.FC<ArcheryCanvasProps> = ({
     const canvas = canvasRef.current;
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
+    const x = (e.clientX - rect.left) * (canvas.width / rect.width);
+    const y = (e.clientY - rect.top) * (canvas.height / rect.height);
 
     mousePosRef.current = { x, y };
     setIsDrawing(true);
@@ -1800,8 +1800,8 @@ export const ArcheryCanvas: React.FC<ArcheryCanvasProps> = ({
     if (!canvas) return;
     const rect = canvas.getBoundingClientRect();
     mousePosRef.current = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top,
+      x: (e.clientX - rect.left) * (canvas.width / rect.width),
+      y: (e.clientY - rect.top) * (canvas.height / rect.height),
     };
   };
 
@@ -1914,7 +1914,9 @@ export const ArcheryCanvas: React.FC<ArcheryCanvasProps> = ({
     <div
       ref={containerRef}
       id="archery-canvas-container"
-      className="relative w-full h-[620px] rounded-2xl overflow-hidden bg-stone-950 border border-stone-800 shadow-2xl select-none"
+      className={`relative w-full h-[620px] rounded-2xl overflow-hidden bg-stone-950 border border-stone-800 shadow-2xl select-none transition-transform duration-150 ease-out ${
+        isDrawing ? 'scale-[1.4]' : 'scale-100'
+      }`}
     >
       {/* Game Canvas */}
       <canvas
@@ -2169,25 +2171,7 @@ export const ArcheryCanvas: React.FC<ArcheryCanvasProps> = ({
                 : 'bg-stone-800 text-white border-stone-600'
             }`}
           >
-            {isTraditional ? (
-              lastHitPopup.isX
-                ? '🎯 貫中! 관중 (홍심 정중앙 X-10점!)'
-                : lastHitPopup.score === 10
-                ? '🌟 貫中! 관중 (홍심 10점 명중!)'
-                : lastHitPopup.score >= 9
-                ? `🎯 관중 (과녁 ${lastHitPopup.score}점)`
-                : lastHitPopup.score > 0
-                ? `🎯 변시 (${lastHitPopup.score}점)`
-                : '💨 실사 (과녁 빗나감)'
-            ) : (
-              lastHitPopup.isX
-                ? '🎯 PERFECT X-10점!'
-                : lastHitPopup.score === 10
-                ? '🌟 BULLSEYE 10점!'
-                : lastHitPopup.score > 0
-                ? `🎯 ${lastHitPopup.score}점!`
-                : '💨 과녁 빗나감 (MISS)'
-            )}
+            {lastHitPopup.score}
           </div>
         </div>
       )}

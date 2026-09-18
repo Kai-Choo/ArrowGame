@@ -109,7 +109,7 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
         <div className="bg-stone-950/80 rounded-xl p-3.5 border border-stone-800">
           <span className="text-xs text-stone-400 block font-medium">총 점수</span>
-          <div className="text-2xl font-black text-amber-400 mt-0.5">{totalScore}점</div>
+          <div className="text-2xl font-black text-amber-400 mt-0.5">{totalScore}</div>
           <span className="text-[10px] text-stone-400">
             {arrowHistory.length > 0 ? `${arrowHistory.length}발 누적 합계` : '사격 전'}
           </span>
@@ -117,7 +117,7 @@ export const ScoreCard: React.FC<ScoreCardProps> = ({
 
         <div className="bg-stone-950/80 rounded-xl p-3.5 border border-stone-800">
           <span className="text-xs text-stone-400 block font-medium">화살당 평균</span>
-          <div className="text-2xl font-black text-white mt-0.5">{avgScore}점</div>
+          <div className="text-2xl font-black text-white mt-0.5">{avgScore}</div>
           <span className="text-[10px] text-stone-400">발당 평균 득점</span>
         </div>
 
