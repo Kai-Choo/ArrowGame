@@ -1,0 +1,6 @@
+{
+  "name": "활 커스텀 & 양궁 게임",
+  "description": "부천활박물관 유물 활과 조선 궁술, 마상기사(말 타고 활쏘기), 나만의 활 커스텀까지 즐기는 고품질 궁술 시뮬레이션 게임",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
